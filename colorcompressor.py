@@ -383,7 +383,7 @@ def addToBoard(board, piece):
 
 def push(board, height):
     for x in range(BOARDWIDTH):
-        if not isCompleteColumn(board, x, height):
+        if not isFullColumn(board, x, height):
             if board[x][height-1] != BLANK:
                 prev = board[x][height-1]
                 board[x][height-1] = BLANK
@@ -402,11 +402,11 @@ def hasHitBottom(board, height):
     else:
         # Returns True if one column is full under a certain height    
         for x in range(BOARDWIDTH):
-            if isCompleteColumn(board, x, height):
+            if isFullColumn(board, x, height):
                 return True
         return False
 
-def isCompleteColumn(board, x, height):
+def isFullColumn(board, x, height):
     # Return True if the xth column from the position of the line is filled with blocks with no gaps.
     for y in range(height, BOARDHEIGHT):
         if board[x][y] == BLANK:
